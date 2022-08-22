@@ -1,0 +1,58 @@
+basePath: /
+consumes:
+- application/json
+definitions:
+  AuthResponse:
+    properties:
+      code:
+        format: int64
+        type: integer
+        x-go-name: Code
+      data:
+        additionalProperties:
+          type: object
+        type: object
+        x-go-name: Data
+      msg:
+        type: string
+        x-go-name: Msg
+    type: object
+    x-go-package: userInfoService/docs
+host: localhost:8080
+info:
+  description: Documentation of our userInfoService API.
+  title: userInfoService.
+  version: 0.1.0
+paths:
+  /auth:
+    get:
+      description: 前端系统通过分发的账号密码，从本接口获取有效期为7天的token
+      operationId: get
+      parameters:
+      - description: 账号
+        in: query
+        name: username
+        required: true
+        type: string
+      - description: 密码
+        in: query
+        name: password
+        required: true
+        type: string
+      responses:
+        "200":
+          description: 获取token成功
+      summary: 获取jwt-token
+      tags:
+      - auth
+produces:
+- application/json
+responses:
+  AuthResponse:
+    description: User Info
+    schema:
+      $ref: '#/definitions/AuthResponse'
+schemes:
+- http
+- https
+swagger: "2.0"

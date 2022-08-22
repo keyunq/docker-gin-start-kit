@@ -1,0 +1,13 @@
+title = "userInfoService"
+dbtype = "mysql"
+errorlogdir = "./logs/error.log.%s%s%s"
+debuglogdir = "./logs/log.%s%s%s"
+jwtsecret = "123qwe123"
+
+[mysql]
+    ip = '192.168.20.21'
+    port = 3307
+    username = 'test'
+    password = 'test'
+    dbname = 'testdb'
+    debug = false
