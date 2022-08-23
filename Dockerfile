@@ -23,5 +23,4 @@ FROM scratch
 COPY --from=builder /userInfoService/userInfoService /
 COPY --from=builder /userInfoService/conf/ /conf/
 RUN mkdir logs
-RUN chmod 755 logs
 ENTRYPOINT ["./userInfoService"]
