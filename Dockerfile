@@ -23,7 +23,8 @@ RUN go build -o userInfoService ./main.go
 FROM alpine:3.7
 COPY --from=builder /userInfoService/userInfoService /
 COPY --from=builder /userInfoService/conf/ /conf/
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai'>/etc/timezone
+COPY /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+RUN echo 'Asia/Shanghai'>/etc/timezone
 RUN mkdir logs
 RUN chmod 755 logs
 ENTRYPOINT ["./userInfoService"]
