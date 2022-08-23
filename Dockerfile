@@ -9,12 +9,12 @@ ENV GOPROXY=https://goproxy.cn
 WORKDIR /userInfoService
 COPY go.mod ./
 COPY go.sum ./
-COPY routers/ ./routers
-COPY conf/ ./conf
-COPY docs/ ./docs
-COPY middlewares/ ./middlewares
-COPY models/ ./models
-COPY pkg/ ./pkg
+COPY routers/* ./routers
+COPY conf/* ./conf
+COPY docs/* ./docs
+COPY middlewares/* ./middlewares
+COPY models/* ./models
+COPY pkg/* ./pkg
 RUN go mod download
 RUN mkdir logs
 COPY main.go ./
