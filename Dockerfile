@@ -23,6 +23,9 @@ RUN go build -o userInfoService ./main.go
 FROM alpine:3.7
 COPY --from=builder /userInfoService/userInfoService /
 COPY --from=builder /userInfoService/conf/ /conf/
-RUN mkdir logs
-RUN chmod 755 logs
+ENV TZ=Asia/Shanghai
+RUN echo "http://mirrors.aliyun.com/alpine/v3.7/main/" > /etc/apk/repositories \
+    && apk --no-cache add tzdata zeromq \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo '$TZ' > /etc/timezone
 ENTRYPOINT ["./userInfoService"]
