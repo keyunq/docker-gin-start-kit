@@ -15,6 +15,7 @@ COPY docs/ ./docs/
 COPY middlewares/ ./middlewares/
 COPY models/ ./models/
 COPY pkg/ ./pkg/
+RUN mkdir logs
 RUN go mod download
 COPY main.go ./
 RUN go build -o userInfoService ./main.go
