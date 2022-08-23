@@ -16,11 +16,11 @@ COPY middlewares/ ./middlewares/
 COPY models/ ./models/
 COPY pkg/ ./pkg/
 RUN go mod download
-RUN mkdir logs
 COPY main.go ./
 RUN go build -o userInfoService ./main.go
  
 FROM scratch
 COPY --from=builder /userInfoService/userInfoService /
 COPY --from=builder /userInfoService/conf/ /conf/
+RUN mkdir logs
 ENTRYPOINT ["./userInfoService"]
