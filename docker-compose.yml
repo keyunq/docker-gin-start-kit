@@ -1,0 +1,13 @@
+version: '3'
+services:
+  userInfoService:
+    build:
+      context: ./                 #指定dockerfile所在目录
+      dockerfile: Dockerfile      #指定dockerfile文件名
+    image: userInfoService:1.0
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - /usr/local/src/userInfoService/logs:/logs
+  
