@@ -42,7 +42,7 @@ func getErrorLogWriter() zapcore.WriteSyncer {
 
 	errorLogPath := fmt.Sprintf(setting.Cfg.ErrorLogDir, time.Now().Format("2006"), time.Now().Format("01"), time.Now().Format("02"))
 
-	file, err := os.OpenFile(errorLogPath, os.O_APPEND|os.O_CREATE, os.ModeAppend)
+	file, err := os.OpenFile(errorLogPath, os.O_APPEND|os.O_WRONLY|os.O_CREATE, os.ModeAppend)
 	if err != nil {
 		panic("日志文件打开失败")
 	}
@@ -55,7 +55,7 @@ func getDebugLogWriter() zapcore.WriteSyncer {
 
 	errorLogPath := fmt.Sprintf(setting.Cfg.DebugLogDir, time.Now().Format("2006"), time.Now().Format("01"), time.Now().Format("02"))
 
-	file, err := os.OpenFile(errorLogPath, os.O_APPEND|os.O_CREATE, os.ModeAppend)
+	file, err := os.OpenFile(errorLogPath, os.O_APPEND|os.O_WRONLY|os.O_CREATE, os.ModeAppend)
 	if err != nil {
 		panic("日志文件打开失败")
 	}
