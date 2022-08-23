@@ -1,6 +1,7 @@
 version: '3'
 services:
-  userInfoService:
+  user_info_service:
+    container_name: "user_info_service"
     build:
       context: ./                 #指定dockerfile所在目录
       dockerfile: Dockerfile      #指定dockerfile文件名
