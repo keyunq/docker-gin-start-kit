@@ -24,4 +24,6 @@ FROM scratch
 COPY --from=builder /userInfoService/userInfoService /
 COPY --from=builder /userInfoService/conf/ /conf/
 COPY --from=builder /userInfoService/logs/ /logs/
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai'>/etc/timezone
+RUN mkdir logs
 ENTRYPOINT ["./userInfoService"]
