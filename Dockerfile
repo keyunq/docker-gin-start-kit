@@ -10,7 +10,7 @@ WORKDIR /userInfoService
 COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
-COPY userInfoService.go ./
+COPY main.go ./
 RUN go build -o userInfoService .
  
 FROM scratch
