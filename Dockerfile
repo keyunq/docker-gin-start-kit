@@ -22,5 +22,6 @@ RUN go build -o userInfoService ./main.go
 FROM scratch
 COPY --from=builder /userInfoService/userInfoService /
 COPY --from=builder /userInfoService/conf/ /conf/
-RUN mkdir logs && chmod 755 logs
+RUN mkdir logs
+RUN chmod 755 logs
 ENTRYPOINT ["./userInfoService"]
